@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #111, #222);
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav .menu {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50px;
+  z-index: -1;
+  transition: transform .5s,width .5s,height .5s;
+  transition-delay: 1s,.5s,.5s;
+}
+
+.nav .toggle-btn.active ~ .menu {
+  z-index: 1;
+  width: 240px;
+  height: 70px;
+  transform: translateY(-100px);
+  transition-delay: 0s,.5s,.5s;
+}
+
+.nav .menu::before {
+  position: absolute;
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  left: calc(50% - 8px);
+  /* bottom: -6px; */
+  bottom: 4px;
+  transform: rotate(45deg);
+  border-radius: 2px;
+  transition: 0.5s;
+}
+
+.nav .toggle-btn.active ~ .menu::before {
+  bottom: -6px;
+  transition-delay: .5s;
+}
+
+.nav .menu ul {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  height: 70px;
+}
+
+.nav .menu ul li {
+  list-style: none;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s;
+  transform: translateY(30px);
+  transition-delay: calc(0s + var(--i));
+}
+
+.nav .toggle-btn.active  ~ .menu ul li {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+  transition-delay: calc(0.75s + var(--i));
+}
+
+.nav .menu ul li a {
+  display: block;
+  font-size: 33px;
+  color: #555;
+  transition: 0.3s;
+}
+.nav .menu ul li a:hover {
+  color: #4070f4;
+}
+
+.nav .toggle-btn {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 25px rgba(255, 255, 255, 0.15);
+}
+
+.nav .toggle-btn i {
+  font-size: 40px;
+  color: #222;
+  transition: 1.5s;
+}
+
+.nav .toggle-btn.active i {
+  transform: rotate(225deg);
+}
